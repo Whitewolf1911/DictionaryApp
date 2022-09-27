@@ -1,7 +1,6 @@
 package com.whitewolf1911.dictionaryapp.dictionary.data.remote.dto
 
 import com.whitewolf1911.dictionaryapp.dictionary.data.local.entity.WordInfoEntity
-import com.whitewolf1911.dictionaryapp.dictionary.domain.model.WordInfo
 
 data class WordInfoDto(
     val license: License,
@@ -13,9 +12,9 @@ data class WordInfoDto(
 ) {
     fun toWordInfoEntity(): WordInfoEntity {
         return WordInfoEntity(
-            meanings = meanings,
-            word = word,
+            meanings = meanings.map { it.toMeaning() },
             phonetic = phonetic,
+            word = word
         )
     }
 }
