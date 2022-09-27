@@ -9,7 +9,7 @@ import com.whitewolf1911.dictionaryapp.dictionary.domain.model.WordInfo
 data class WordInfoEntity(
     @PrimaryKey val id: Int? = null,
     val word: String,
-    val phonetic: String,
+    val phonetic: String?,
     val meanings: List<Meaning>
 ) {
     fun toWordInfo(): WordInfo {

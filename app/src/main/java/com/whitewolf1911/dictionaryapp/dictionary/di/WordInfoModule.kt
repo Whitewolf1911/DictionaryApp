@@ -3,6 +3,7 @@ package com.whitewolf1911.dictionaryapp.dictionary.di
 import android.app.Application
 import androidx.room.Room
 import com.google.gson.Gson
+import com.whitewolf1911.dictionaryapp.dictionary.data.local.Converters
 import com.whitewolf1911.dictionaryapp.dictionary.data.local.WordInfoDatabase
 import com.whitewolf1911.dictionaryapp.dictionary.data.remote.DictionaryApi
 import com.whitewolf1911.dictionaryapp.dictionary.data.repository.WordInfoRepositoryImpl
@@ -46,7 +47,8 @@ object WordInfoModule {
             WordInfoDatabase::class.java,
             "word_db"
         )
-            .addTypeConverter(GsonParser(Gson()))
+            .addTypeConverter(Converters(GsonParser(Gson())))
+            .fallbackToDestructiveMigration()
             .build()
     }
 
